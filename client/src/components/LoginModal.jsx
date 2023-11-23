@@ -95,7 +95,7 @@ export default function LoginModal() {
                                 <CloseIcon sx={{ position: 'absolute', top: { xs: 0, md: -65 }, right: { xs: 0, md: -60 }, cursor: 'pointer' }} onClick={() => dispacth(modal(false))} />
 
                                 <Typography variant="h5" color="initial" textAlign={'center'} mb={3}>Join Us</Typography>
-                                <Typography variant="h5" color="initial" textAlign={'center'} mb={3}>ali@drl26.com</Typography>
+                                
 
                                 <Formik
                                     initialValues={{ email: "", password: "" }}
