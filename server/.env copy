@@ -1,0 +1,6 @@
+PORT=8000
+HOST=127.0.0.1
+MONGODB=mongodb+srv://kpln:uvReE4pqK4X542vB@kpln.e0lcger.mongodb.net/blogAPI?retryWrites=true&w=majority
+SECRET_KEY=sdskodnsdjfndsf67dasdasdhskhgfduszf7dsf76ewfhjdfjb
+# NODE_ENV | ENV_NAME = production|prod | development|dev | test
+NODE_ENV=development
