@@ -113,7 +113,7 @@ const Footer = () => {
                     alignItems: "center",
                 }}
             >
-                <Typography
+                {/* <Typography
                     variant="body1"
                     noWrap
                     component="a"
@@ -126,7 +126,7 @@ const Footer = () => {
                     }}
                 >
                     Developed by KP
-                </Typography>
+                </Typography> */}
                 <Typography
                     variant="body1"
                     nowrap="true"
