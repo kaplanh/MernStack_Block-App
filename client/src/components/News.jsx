@@ -3,7 +3,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import imgNotAv from '../img/Image_not_available.png'
+import imgNotAv from "../../public/img/Image_not_available.png";
 
 const News = () => {
     const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_NEWS_KEY}`

@@ -87,7 +87,7 @@ const useBlogCall = () => {
     try {
       await axiosWithToken.delete(`api/blogs/${id}/`);
       toastSuccessNotify("Blog is Deleted Secuccessfully !");
-      navigate('/')
+      navigate('/myblogs')
     } catch (error) {
       toastErrorNotify("It Could not Deleted !")
       console.log(error);

@@ -99,7 +99,7 @@ const BlogForm = ({formValues , handleClose}) => {
                       onChange={handleChange}
                     />
 
-                    <Button variant='contained' color="primary" type="submit">
+                    <Button sx={{bgcolor:"black"}} variant='contained'  type="submit">
                       SAVE
                     </Button>
                   </Box>

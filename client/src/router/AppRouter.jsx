@@ -9,6 +9,7 @@ import MyBlogs from "../pages/MyBlogs"
 import Profile from "../pages/Profile"
 import LoginModal from "../components/LoginModal"
 import DetailBlog from "../pages/DetailBlog"
+import NotFound from "../pages/NotFound"
 
 
 
@@ -18,34 +19,27 @@ const AppRouter = () => {
 
 
   return (
-    <div>
+      <div>
+          <Navbar />
 
+          <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="about" element={<About />} />
 
-      <Navbar/>
+              <Route path="" element={<PrivateRouter />}>
+                  <Route path="newblog" element={<NewBlog />} />
+                  <Route path="myblogs" element={<MyBlogs />} />
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="detail/:id" element={<DetailBlog />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+          </Routes>
 
-      <Routes>
+          <LoginModal open={open} />
 
-        <Route path='/' element={<Dashboard />} />
-        <Route path='about' element={<About />} />
-
-        <Route path="" element={<PrivateRouter />} >
-
-          <Route path='newblog' element={<NewBlog />} />
-          <Route path='myblogs' element={<MyBlogs />} />
-          <Route path='profile' element={<Profile />} />
-          <Route path="detail/:id" element={<DetailBlog />} />
-
-
-        </Route>
-
-      </Routes>
-
-      <LoginModal open={open} />
-
-      <Footer />
-
-    </div>
-  )
+          <Footer />
+      </div>
+  );
 }
 
 export default AppRouter
