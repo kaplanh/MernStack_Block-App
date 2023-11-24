@@ -101,21 +101,21 @@ const BlogSchema = new Schema(
   next();
 }); */
 
-BlogSchema.pre(["save", "findOneAndUpdate"], async function (next) {
-  const data = this._update || this;
+BlogSchema.pre(["save", "_update"], async function (next) {
+    const data = this._update || this;
 
-  // category alanına bağlı kategori bilgisini al
-  const category = await Category.findOne({ _id: data.category });
+    // category alanına bağlı kategori bilgisini al
+    const category = await Category.findOne({ _id: data.category });
 
-  // category_name'i belirle
-  this.category_name = category.name;
+    // category_name'i belirle
+    this.category_name = category.name;
 
-  // updateOne için _update değil, findOneAndUpdate için _updateOne kullan
-  if (this.op === "_update") {
-      this._update.category_name = category.name;
-  }
+    // updateOne için _update değil, findOneAndUpdate için _updateOne kullan
+    if (this.op === "_update") {
+        this._update.category_name = category.name;
+    }
 
-  next();
+    next();
 });
 
 BlogSchema.pre("init", function (data) {
