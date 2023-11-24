@@ -16,10 +16,11 @@ const BlogForm = ({formValues , handleClose}) => {
    useEffect(() => {
      getCategories('categories')
    }, [])
+  const category_id=formValues?.category?._id
 
   return (
     <Formik
-            initialValues={formValues}
+            initialValues={{...formValues,category:category_id}}
             onSubmit={(values, action) => {
 
                 if("_id" in formValues){

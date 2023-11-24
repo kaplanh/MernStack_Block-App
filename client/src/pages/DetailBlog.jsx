@@ -71,7 +71,7 @@ export default function DetailBlog() {
                             <Typography variant="body1" color="text.secondary" mb={3}>{blogDetail?.content}</Typography>
 
 
-                            <Chip variant="outlined" color="primary" size="small" label={"# " + blogDetail?.category_name} />
+                            <Chip variant="outlined" color="primary" size="small" label={"# " + blogDetail?.category?.name} />
 
                         </Box>
                     </Box>
