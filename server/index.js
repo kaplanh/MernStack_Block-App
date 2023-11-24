@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(require("cors")());
 app.use(require("./src/middlewares/findSearchSortPage"));
 app.use(require("./src/middlewares/authentication"));
-app.use(require('./src/middlewares/logger'))
+// app.use(require('./src/middlewares/logger'))
 /* ------------------------------------------------------------------------- */
 // ROUTES:
 app.use(require("./src/routes"));
