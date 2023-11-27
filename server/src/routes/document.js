@@ -30,9 +30,7 @@ const swaggerUi = require("swagger-ui-express");
 router.use(
     "/swagger",
     swaggerUi.serve,
-    swaggerUi.setup(require("../configs/swagger.json"), {
-        swaggerOptions: { persistAuthorization: true },
-    })
+    swaggerUi.setup(require("../configs/swagger.json"))
 );
 
 /* ------------------------------------------------------- */
