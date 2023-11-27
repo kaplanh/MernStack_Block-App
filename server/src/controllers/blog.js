@@ -40,7 +40,7 @@ module.exports = {
             #swagger.tags = ["Blogs"]
             #swagger.summary = "Create Blog"
             #swagger.description = "Look to <b>'Models/Blog'</b> for parameters."
-             #swagger.parameters['body'] = {
+            #swagger.parameters['body'] = {
                 in: 'body',
                 required: 'true',
                 schema: {

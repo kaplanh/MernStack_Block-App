@@ -60,6 +60,7 @@ module.exports = {
             #swagger.tags = ["Authentication"]
             #swagger.summary = "Logout"
             #swagger.description = 'Delete token key.'
+
         */
 
         const auth = req?.headers?.authorization || null;
