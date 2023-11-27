@@ -23,7 +23,7 @@ const document = {
         contact: { name: packageJson.author, email: "kplnhsyn.49@gmail.com" },
         license: packageJson.license,
     },
-    host: `https://vercel.com/kaplanh/mern-stack-block-app:${PORT}`,
+    host: `${HOST}:${PORT}`,
     basePath: "/",
     schemes: ["http", "https"],
     consumes: ["application/json"],
