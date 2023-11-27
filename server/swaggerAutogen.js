@@ -7,9 +7,6 @@
 
 const swaggerAutogen = require("swagger-autogen")();
 
-
-
-
 const packageJson = require("./package.json");
 
 require("dotenv").config();
@@ -26,7 +23,7 @@ const document = {
         contact: { name: packageJson.author, email: "kplnhsyn.49@gmail.com" },
         license: packageJson.license,
     },
-    host: `${HOST}:${PORT}`,
+    host: `https://vercel.com/kaplanh/mern-stack-block-app:${PORT}`,
     basePath: "/",
     schemes: ["http", "https"],
     consumes: ["application/json"],
