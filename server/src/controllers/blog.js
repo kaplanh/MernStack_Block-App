@@ -9,10 +9,22 @@ const Comment = require("../models/comment");
 const Like = require("../models/like");
 
 module.exports = {
-  list: async (req, res) => {
-    let filters = {};    
-    filters = { status: "p" };
-    
+    list: async (req, res) => {
+        /*
+            #swagger.tags = ["Blogs"]
+            #swagger.summary = "List Blogs"
+            #swagger.description = `
+                You can send query with endpoint for search[], sort[], page and limit.
+                <ul> Examples:
+                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
+                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
+                    <li>URL/?<b>page=2&limit=1</b></li>
+                </ul>
+            `
+        */
+        let filters = {};
+        filters = { status: "p" };
+
         if (req?.query?.author && req.user.username === req?.query?.author)
             filters = req.query;
         if (req?.query?.author && !(req.user.username === req?.query?.author))
@@ -23,6 +35,23 @@ module.exports = {
     },
 
     create: async (req, res) => {
+        /*
+            #swagger.tags = ["Blogs"]
+            #swagger.summary = "Create Blog"
+            #swagger.description =``
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {                
+                        "title": "title 2",
+                        "content": "content 2",
+                        "image": "image 2",
+                        "category": "655c6d7f0a6fe58b8a9dcc5f",
+                        "author": "655b56275a51b6c4beaaa772",
+                        "status": "p"
+                        }
+            }
+        */
         req.body.author = req.user.username;
 
         const data = await Blog.create(req.body);
@@ -32,6 +61,10 @@ module.exports = {
         });
     },
     read: async (req, res) => {
+        /*
+            #swagger.tags = ["Blogs"]
+            #swagger.summary = "Get Single Blog"
+        */
         let views = await View.findOne({ post_id: req.params.id });
 
         if (!views) views = await View.create({ post_id: req.params.id });
@@ -56,6 +89,16 @@ module.exports = {
         res.status(200).send(data);
     },
     update: async (req, res) => {
+        /*
+            #swagger.tags = ["Blogs"]
+            #swagger.summary = "Update Blog"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                }
+            }
+        */
         const data = await Blog.updateOne({ _id: req.params.id }, req.body);
         res.status(202).send({
             error: false,
@@ -64,6 +107,10 @@ module.exports = {
         });
     },
     delete: async (req, res) => {
+        /*
+            #swagger.tags = ["Blogs"]
+            #swagger.summary = "Delete Blog"
+        */
         const blog = await Blog.findOne({ _id: req.params.id });
 
         const author = blog?.author;

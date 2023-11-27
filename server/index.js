@@ -13,11 +13,18 @@ require("express-async-errors");
 // DB Connection
 require("./src/configs/dbConnection")();
 /* ------------------------------------------------------------------------- */
+
 // Home Path
 app.all("/", (req, res) => {
     res.send({
         error: false,
         message: "Welcome to Blog App server!!",
+        documents: {
+            swagger: "/documents/swagger",
+            redoc: "/documents/redoc",
+            json: "/documents/json",
+        },
+        user: req.user,
     });
 });
 /* ------------------------------------------------------------------------- */
