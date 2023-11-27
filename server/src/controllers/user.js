@@ -35,6 +35,7 @@ module.exports = {
         /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Create User"
+            #swagger.description = "Look to <b>'Models/User'</b> for parameters."
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
@@ -72,6 +73,7 @@ module.exports = {
         /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Update User"
+            #swagger.description = "Look to <b>'Models/User'</b> for parameters."
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,

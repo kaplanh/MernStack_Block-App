@@ -23,7 +23,31 @@ router.use("/json", (req, res) => {
 
 // Redoc:
 const redoc = require("redoc-express");
-router.use("/redoc", redoc({ specUrl: "/documents/json", title: "API Docs" }));
+router.use(
+    "/redoc",
+    redoc({
+        specUrl: "/documents/json",
+        title: "API Docs",
+        // ?optional renklendirme icin
+        redocOptions: {
+            theme: {
+                colors: { primary: { main: "#6EC5AB" } },
+                typography: {
+                    fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
+                    fontSize: "15px",
+                    lineHeight: "1.5",
+                    code: {
+                        code: "#87E8C7",
+                        backgroundColor: "#4D4D4E",
+                    },
+                },
+                menu: {
+                    backgroundColor: "#ffffff",
+                },
+            },
+        },
+    })
+);
 
 // Swagger:
 const swaggerUi = require("swagger-ui-express");
@@ -37,3 +61,32 @@ router.use(
 
 /* ------------------------------------------------------- */
 module.exports = router;
+
+app.use(
+    "/docs/redoc",
+    redoc({
+        specUrl: "/docs/json",
+        title: "API Docs",
+        // redocOptions: {
+        //     theme: {
+        //         colors: {
+        //             primary: {
+        //                 main: '#6EC5AB'
+        //             }
+        //         },
+        //         typography: {
+        //             fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
+        //             fontSize: '15px',
+        //             lineHeight: '1.5',
+        //             code: {
+        //                 code: '#87E8C7',
+        //                 backgroundColor: '#4D4D4E'
+        //             }
+        //         },
+        //         menu: {
+        //             backgroundColor: '#ffffff'
+        //         }
+        //     }
+        // }
+    })
+);
