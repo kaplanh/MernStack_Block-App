@@ -22,6 +22,7 @@ module.exports = {
                 </ul>
             `
         */
+
         let filters = {};
         filters = { status: "p" };
 
@@ -38,20 +39,16 @@ module.exports = {
         /*
             #swagger.tags = ["Blogs"]
             #swagger.summary = "Create Blog"
-            #swagger.description =``
-            #swagger.parameters['body'] = {
+            #swagger.description = "Look to <b>'Models/Blog'</b> for parameters."
+             #swagger.parameters['body'] = {
                 in: 'body',
-                required: true,
-                schema: {                
-                        "title": "title 2",
-                        "content": "content 2",
-                        "image": "image 2",
-                        "category": "655c6d7f0a6fe58b8a9dcc5f",
-                        "author": "655b56275a51b6c4beaaa772",
-                        "status": "p"
-                        }
+                required: 'true',
+                schema: {
+                    $ref: '#/definitions/Blog'
+                }
             }
         */
+
         req.body.author = req.user.username;
 
         const data = await Blog.create(req.body);
@@ -65,6 +62,7 @@ module.exports = {
             #swagger.tags = ["Blogs"]
             #swagger.summary = "Get Single Blog"
         */
+
         let views = await View.findOne({ post_id: req.params.id });
 
         if (!views) views = await View.create({ post_id: req.params.id });
@@ -99,6 +97,7 @@ module.exports = {
                 }
             }
         */
+
         const data = await Blog.updateOne({ _id: req.params.id }, req.body);
         res.status(202).send({
             error: false,
@@ -107,10 +106,13 @@ module.exports = {
         });
     },
     delete: async (req, res) => {
+        Delete;
+
         /*
             #swagger.tags = ["Blogs"]
             #swagger.summary = "Delete Blog"
         */
+
         const blog = await Blog.findOne({ _id: req.params.id });
 
         const author = blog?.author;

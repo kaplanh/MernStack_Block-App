@@ -22,69 +22,72 @@ const { Schema, model } = require("mongoose");
 const Category = require("./category");
 
 const BlogSchema = new Schema(
-  {
-    title: {
-      type: String,
-      trim: true,
-      required: true,
+    {
+        title: {
+            type: String,
+            trim: true,
+            required: true,
+            dataType: "string",
+            exampleUsing: "title:test1",
+        },
+        content: {
+            type: String,
+            required: true,
+            dataType: "string",
+        },
+        image: {
+            type: String,
+            trim: true,
+            dataType: "string",
+        },
+        category: {
+            type: Schema.Types.ObjectId,
+            ref: "Category",
+            required: true,
+        },
+        author: {
+            type: String,
+            required: true,
+        },
+        status: {
+            type: String,
+            enum: ["p", "d"],
+            default: "d",
+        },
+
+        post_views: {
+            type: Number,
+            default: 0,
+        },
+        comments: [],
+        comment_count: {
+            type: Number,
+            default: function () {
+                return this.comments.length;
+            },
+            transform: function () {
+                return this.comments.length;
+            },
+        },
+        likes_n: {
+            type: Array,
+            default: [],
+        },
+        likes: {
+            type: Number,
+            default: function () {
+                return this.likes_n.length;
+            },
+            transform: function () {
+                return this.likes_n.length;
+            },
+        },
     },
-    content: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      trim: true,
-    },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      enum: ["p", "d"],
-      default: "d",
-    },
-    
-    post_views: {
-      type: Number,
-      default: 0,
-    },
-    comments: [],
-    comment_count: {
-      type: Number,
-      default: function () {
-        return this.comments.length;
-      },
-      transform: function () {
-        return this.comments.length;
-      },
-    },
-    likes_n: {
-      type: Array,
-      default: [],
-    },
-    likes: {
-      type: Number,
-      default: function () {
-        return this.likes_n.length;
-      },
-      transform: function () {
-        return this.likes_n.length;
-      },
-    },
-  },
-  { collection: "blogs", timestamps: true }
+    { collection: "blogs", timestamps: true }
 );
 
-
 BlogSchema.pre("init", function (data) {
-  data.id = data._id;
+    data.id = data._id;
 });
 
 /* ------------------------------------------------------- */

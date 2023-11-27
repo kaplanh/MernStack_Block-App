@@ -4,16 +4,14 @@
     "version": "1.0.0",
     "title": "Blog API",
     "description": "This is server of blog app",
-    "termsOfService": "http://www.clarusway.com/#",
+    "termsOfService": "\"http://www.clarusway.com/#\"",
     "contact": {
       "name": "Hüseyin Kaplan",
       "email": "kplnhsyn.49@gmail.com"
     },
-    "license": {
-      "name": "ISC"
-    }
+    "license": "ISC"
   },
-  "host": "https://mern-stack-block-app.vercel.app/:8000",
+  "host": "127.0.0.1:8000",
   "basePath": "/",
   "schemes": [
     "http",
@@ -27,9 +25,18 @@
       "description": "SimpleToken Auth * Example: <b>Token <i>...tokenKey...<i></b>"
     }
   },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/users/": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -40,6 +47,9 @@
     },
     "/users/register": {
       "post": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "responses": {
           "201": {
@@ -50,6 +60,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -66,6 +79,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -82,6 +98,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -101,6 +120,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -167,6 +189,9 @@
     },
     "/api/categories": {
       "get": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -175,6 +200,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "responses": {
           "201": {
@@ -185,6 +213,9 @@
     },
     "/api/categories/{id}": {
       "get": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -201,6 +232,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -217,6 +251,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -236,6 +273,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -254,6 +294,9 @@
     },
     "/api/comments/{id}": {
       "post": {
+        "tags": [
+          "Comments"
+        ],
         "description": "",
         "parameters": [
           {
@@ -285,6 +328,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Comments"
+        ],
         "description": "",
         "parameters": [
           {
@@ -301,6 +347,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Comments"
+        ],
         "description": "",
         "parameters": [
           {
@@ -338,40 +387,14 @@
           "Blogs"
         ],
         "summary": "Create Blog",
-        "description": "",
+        "description": "Look to <b>'Models/Blog'</b> for parameters.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "type": "string",
-                  "example": "title 2"
-                },
-                "content": {
-                  "type": "string",
-                  "example": "content 2"
-                },
-                "image": {
-                  "type": "string",
-                  "example": "image 2"
-                },
-                "category": {
-                  "type": "string",
-                  "example": "655c6d7f0a6fe58b8a9dcc5f"
-                },
-                "author": {
-                  "type": "string",
-                  "example": "655b56275a51b6c4beaaa772"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "p"
-                }
-              }
+              "$ref": "#/definitions/Blog"
             }
           }
         ],
@@ -487,6 +510,9 @@
     },
     "/api/likes/{id}": {
       "post": {
+        "tags": [
+          "Likes"
+        ],
         "description": "",
         "parameters": [
           {
@@ -683,6 +709,14 @@
             "required": {
               "type": "boolean",
               "example": true
+            },
+            "dataType": {
+              "type": "string",
+              "example": "string"
+            },
+            "exampleUsing": {
+              "type": "string",
+              "example": "title:test1"
             }
           }
         },
@@ -695,6 +729,10 @@
             "required": {
               "type": "boolean",
               "example": true
+            },
+            "dataType": {
+              "type": "string",
+              "example": "string"
             }
           }
         },
@@ -707,6 +745,10 @@
             "trim": {
               "type": "boolean",
               "example": true
+            },
+            "dataType": {
+              "type": "string",
+              "example": "string"
             }
           }
         },

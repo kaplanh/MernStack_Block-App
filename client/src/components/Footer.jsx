@@ -1,5 +1,5 @@
 import { Box, Link, Typography } from "@mui/material";
-import React from "react";
+
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
@@ -9,35 +9,35 @@ import { iconStyle } from "../styles/globalStyles";
 import { useSelector } from "react-redux";
 
 const Footer = () => {
-    // const [weather, setWeather] = useState();
-
-    // ?1.yol
     const [weather, setWeather] = useState();
-    const [city, setCity] = useState("hannover");
-    const { userInfo } = useSelector((state) => state.auth);
 
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
-        import.meta.env.VITE_WEATHER_API_KEY
-    }&units=metric&lang=de`;
+    // // ?1.yol
+    // const [weather, setWeather] = useState();
+    // const [city, setCity] = useState("hannover");
+    // const { userInfo } = useSelector((state) => state.auth);
 
-    const getdata = () => {
-        fetch(URL)
-            .then((res) => res.json())
-            .then((data) => {
-                setWeather(data);
-            });
-    };
-    useEffect(() => {
-        if (userInfo?.email) {
-            setCity(localStorage.getItem("userCity") || "berlin");
-        } else {
-            setCity("hannover");
-        }
-    }, [userInfo]);
+    // const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
+    //     import.meta.env.VITE_WEATHER_API_KEY
+    // }&units=metric&lang=de`;
 
-    useEffect(() => {
-        getdata();
-    }, [URL]);
+    // const getdata = () => {
+    //     fetch(URL)
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             setWeather(data);
+    //         });
+    // };
+    // useEffect(() => {
+    //     if (userInfo?.email) {
+    //         setCity(localStorage.getItem("userCity") || "berlin");
+    //     } else {
+    //         setCity("hannover");
+    //     }
+    // }, [userInfo]);
+
+    // useEffect(() => {
+    //     getdata();
+    // }, [URL]);
 
     // ?2.yol
     //*********window.navigator.geolocation)*********************** */
@@ -46,8 +46,8 @@ const Footer = () => {
             (position) => {
                 const { latitude, longitude } = position.coords;
                 console.log(latitude, longitude);
-                var lat = Number(latitude.toFixed());
-                var lon = Number(longitude.toFixed());
+                let lat = Number(latitude.toFixed());
+                let lon = Number(longitude.toFixed());
                 const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${
                     import.meta.env.VITE_WEATHER_API_KEY
                 }&units=metric&lang=de`;
@@ -56,7 +56,7 @@ const Footer = () => {
                     .then((res) => res.json())
                     .then((data) => {
                         setWeather(data);
-                        // console.log(data);
+                        console.log(data);
                     });
             },
             (err) => {

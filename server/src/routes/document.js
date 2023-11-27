@@ -16,47 +16,16 @@ router.all("/", (req, res) => {
     });
 });
 
-//? JSON i görüntülemek icin:
+// JSON:
 router.use("/json", (req, res) => {
     res.sendFile(`/src/configs/swagger.json`, { root: "." });
 });
 
-//? Redocta görüntülemek icin:
-// npm i redoc-express
+// Redoc:
 const redoc = require("redoc-express");
-router.use(
-    "/redoc",
-    redoc({
-        specUrl: "/documents/json",
-        title: "API Docs", // *renk ayarlari icin
-        redocOptions: {
-            theme: {
-                colors: {
-                    primary: {
-                        main: "#6EC5AB",
-                    },
-                },
-                typography: {
-                    fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-                    fontSize: "15px",
-                    lineHeight: "1.5",
-                    code: {
-                        code: "#87E8C7",
-                        backgroundColor: "#4D4D4E",
-                    },
-                },
-                menu: {
-                    backgroundColor: "#ffffff",
-                },
-            },
-        },
-    })
-);
+router.use("/redoc", redoc({ specUrl: "/documents/json", title: "API Docs" }));
 
-
-// ?swagger da görüntülemek icin
-// Swagger-UI:
-// npm i swagger-ui-express
+// Swagger:
 const swaggerUi = require("swagger-ui-express");
 router.use(
     "/swagger",
