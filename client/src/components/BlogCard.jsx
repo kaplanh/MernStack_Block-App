@@ -101,7 +101,7 @@ export default function BlogCard({ blog }) {
                             backgroundColor: "#F2F2F2",
                             mt: { xs: 3, md: 0 },
                         }}
-                        label={"# " + category}
+                        label={"# " + category.name}
                     />
                 </CardContent>
 
