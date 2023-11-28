@@ -37,6 +37,10 @@ const UserSchema = new Schema(
             index: true,
             validate: [isEmail, "Email type is not correct"],
         },
+        emailVerified: {
+            type: Boolean,
+            default: false,
+        },
         password: {
             type: String,
             trim: true,
@@ -69,7 +73,7 @@ const UserSchema = new Schema(
 );
 /* ------------------------------------------------------- */
 // Schema Configs:
-UserSchema.pre(['save', 'updateOne'], function (next) {
+UserSchema.pre(['save'], function (next) {
 
     const data = this?._update || this
 

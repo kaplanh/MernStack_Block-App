@@ -9,6 +9,9 @@ const user = require("../controllers/user");
 const auth = require("../controllers/auth");
 
 // user routes
+router.get("/verify", user.verify);
+
+
 router.route("/")
   .get(user.list)
 

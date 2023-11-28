@@ -6,7 +6,7 @@
 const User = require("../models/user");
 const Token = require("../models/token");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-
+const sendMail=require('../helpers/sendMail')
 module.exports = {
     list: async (req, res) => {
         /*
@@ -24,6 +24,7 @@ module.exports = {
         */
 
         const data = await res.getModelList(User);
+
         res.status(200).send({
             error: false,
             details: await res.getModelListDetails(User),
@@ -54,6 +55,20 @@ module.exports = {
 
         user._doc.id = user._id;
         user._doc.token = tokenData.token;
+        sendMail(
+            // user email:
+            user.email,
+            // Subject:
+            "Welcome",
+            // Message:
+            `
+                <p>Welcome to our system</p>
+                Bla bla bla...
+                Verify Email: https://mern-stack-block-app.vercel.app/users/verify/?id=${
+                    user._id
+                }&verifyCode=${passwordEncrypt(user.email)}
+            `
+        );
 
         res.status(201).send(user);
     },
@@ -102,5 +117,24 @@ module.exports = {
             error: !data.deletedCount,
             data,
         });
+    },
+    verify: async (req, res) => {
+        const { id: _id, verifyCode } = req.query;
+        console.log(req.query);
+        const user = await User.findOne({ _id });
+        if (user && verifyCode == passwordEncrypt(user.email)) {
+            await User.updateOne({ _id }, { emailVerified: true });
+            
+
+            sendMail(user.email, "Email Verified", "Email Verified");
+            console.log(user);
+            res.status(200).send({
+                error: false,
+                message: "Email Verified",
+            });
+        } else {
+            res.errorStatusCode = 402;
+            throw new Error("User Not Found.");
+        }
     },
 };
