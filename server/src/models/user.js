@@ -18,51 +18,55 @@ const { Schema, model } = require('mongoose')
 const { isEmail } = require('validator') // for Validate process : npm i validator
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 // User Model:
-const UserSchema = new Schema({
-    username: {
-        type: String,
-        trim: true,
-        required: true,
-        unique: true,
-        index: true
-    
+const UserSchema = new Schema(
+    {
+        username: {
+            type: String,
+            trim: true,
+            required: true,
+            unique: true,
+            index: true,
+            dataType: "string",
+            exampleUsing: "title:test1",
+        },
+        email: {
+            type: String,
+            trim: true,
+            required: true,
+            unique: true,
+            index: true,
+            validate: [isEmail, "Email type is not correct"],
+        },
+        password: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        first_name: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        last_name: {
+            type: String,
+            trim: true,
+            required: true,
+        },
+        image: {
+            type: String,
+            trim: true,
+        },
+        bio: {
+            type: String,
+            trim: true,
+        },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
     },
-    email: {
-        type: String,
-        trim: true,
-        required: true,
-        unique: true,
-        index: true,
-        validate: [isEmail, "Email type is not correct"]
-    },
-    password: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    first_name: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    last_name: {
-        type: String,
-        trim: true,
-        required: true
-    },
-    image: {
-        type: String,
-        trim: true,
-    },
-    bio: {
-        type: String,
-        trim: true,
-    },
-    isAdmin: {
-        type: Boolean,
-        default: false
-    },
-},{ collection: 'users', timestamps: true })
+    { collection: "users", timestamps: true }
+);
 /* ------------------------------------------------------- */
 // Schema Configs:
 UserSchema.pre(['save', 'updateOne'], function (next) {

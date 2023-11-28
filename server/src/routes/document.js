@@ -61,32 +61,3 @@ router.use(
 
 /* ------------------------------------------------------- */
 module.exports = router;
-
-app.use(
-    "/docs/redoc",
-    redoc({
-        specUrl: "/docs/json",
-        title: "API Docs",
-        // redocOptions: {
-        //     theme: {
-        //         colors: {
-        //             primary: {
-        //                 main: '#6EC5AB'
-        //             }
-        //         },
-        //         typography: {
-        //             fontFamily: `"museo-sans", 'Helvetica Neue', Helvetica, Arial, sans-serif`,
-        //             fontSize: '15px',
-        //             lineHeight: '1.5',
-        //             code: {
-        //                 code: '#87E8C7',
-        //                 backgroundColor: '#4D4D4E'
-        //             }
-        //         },
-        //         menu: {
-        //             backgroundColor: '#ffffff'
-        //         }
-        //     }
-        // }
-    })
-);

@@ -52,7 +52,7 @@
           "Users"
         ],
         "summary": "Create User",
-        "description": "",
+        "description": "Look to <b>'Models/User'</b> for parameters.",
         "parameters": [
           {
             "name": "body",
@@ -96,7 +96,7 @@
           "Users"
         ],
         "summary": "Update User",
-        "description": "",
+        "description": "Look to <b>'Models/User'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
@@ -147,7 +147,7 @@
           "Users"
         ],
         "summary": "Update User",
-        "description": "",
+        "description": "Look to <b>'Models/User'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
@@ -635,6 +635,14 @@
             "index": {
               "type": "boolean",
               "example": true
+            },
+            "dataType": {
+              "type": "string",
+              "example": "string"
+            },
+            "exampleUsing": {
+              "type": "string",
+              "example": "title:test1"
             }
           }
         },
