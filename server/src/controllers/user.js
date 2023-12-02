@@ -127,7 +127,7 @@ module.exports = {
             
 
             sendMail(user.email, "Email Verified", "Email Verified");
-            console.log(user);
+            // console.log(user);
             res.status(200).send({
                 error: false,
                 message: "Email Verified",

@@ -40,6 +40,12 @@ const BlogSchema = new Schema(
             trim: true,
             dataType: "string",
         },
+        // images: [],
+        images: {
+            type: Array,
+            default: []
+        },
+
         category: {
             type: Schema.Types.ObjectId,
             ref: "Category",

@@ -5,7 +5,7 @@ router.use("/users", require("./user"));
 
 // categories
 router.use("/api", require('./blogComLikCat'))
-// categories
+// documents
 // router.use("/documents", require('./document'))
 
 

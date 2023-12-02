@@ -48,6 +48,10 @@ module.exports = {
                 }
             }
         */
+        if (req?.user) {
+            req.body.createdId = req.user._id;
+            req.body.updatedId = req.user._id;
+        }
 
         req.body.author = req.user.username;
 
@@ -97,6 +101,16 @@ module.exports = {
                 }
             }
         */
+
+        // console.log("body:", req.body); // upload.single()
+        // console.log("file:", req.file); // upload.single()
+        // console.log("files:", req.files); // upload.array() or upload.any()
+
+        req.body.images = req.body?.images || [];
+        for (let file of req.files) {
+            req.body.images.push(file.originalname);
+        }
+        req.body.updatedId = req.user._id;
 
         const data = await Blog.updateOne({ _id: req.params.id }, req.body);
         res.status(202).send({
